@@ -38,7 +38,7 @@ const privArr = data._value.result
 
 <style scoped>
 .badge {
-  @apply text-teal-50;
+  @apply text-teal-900 dark:text-teal-50;
 }
 
 .badge-tooltip {

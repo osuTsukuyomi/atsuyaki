@@ -3,7 +3,7 @@
     <header>
       <nav class="p-6 flex flex-wrap justify-between items-center mx-auto">
         <div class="flex gap-x-8 items-center">
-          <NuxtLink to="/"><h1 class="text-teal-200 font-bold text-2xl">{{ config.APP_NAME }}</h1></NuxtLink>
+          <NuxtLink to="/"><h1 class="text-teal-500 dark:text-teal-200 font-bold text-2xl">{{ config.APP_NAME }}</h1></NuxtLink>
           <ul class="flex gap-x-6">
             <li>
               <NuxtLink :to="Routes.Leaderboard">{{ $t('h_leaderboard') }}</NuxtLink>
@@ -14,7 +14,7 @@
           </ul>
         </div>
         <div class="flex items-center">
-          <input type="text" class="px-6 py-2 rounded-3xl outline-none bg-zinc-800 text-zinc-400"
+          <input type="text" class="px-6 py-2 rounded-3xl outline-none bg-zinc-100 dark:bg-zinc-800 text-zinc-400"
                  :placeholder="$t('h_searchPlaceholder')">
         </div>
         <div class="flex items-center gap-x-6">

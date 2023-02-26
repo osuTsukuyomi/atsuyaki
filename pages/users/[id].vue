@@ -1,30 +1,38 @@
 <template>
   <div class="flex flex-col w-5/6 mx-auto">
-    <h1 class="text-3xl text-teal-300 py-8 font-bold">информация об игроке</h1>
+    <h1 class="text-3xl text-teal-500 dark:text-teal-300 py-8 font-bold">информация об игроке</h1>
     <div class="flex xl:flex-row sm:flex-col gap-4">
       <div class="flex flex-col shrink sm:shrink-0 gap-4 w-80">
-        <div class="bg-zinc-800 p-4 rounded-xl border-2 border-zinc-700 flex flex-col items-center gap-2">
+        <!--        Profile block-->
+        <div
+            class="dark:bg-zinc-800 bg-zinc-100 p-4 rounded-xl border-2 dark:border-zinc-700 flex flex-col items-center gap-2">
           <nuxt-img class="rounded-full w-32" :src="`${config.AVATAR_URL}/${id}.jpg`"></nuxt-img>
           <div class="flex flex-row items-center gap-2">
             <Icon :name="`circle-flags:${player.player.info.country}`" size="1.25em"></Icon>
             <span class="text-2xl font-bold">{{ player.player.info.name }}</span>
           </div>
-          <span class="text-teal-300 text-lg font-semibold"
+          <span class="text-teal-500 dark:text-teal-300 text-lg font-semibold"
                 v-if="player.player.info.custom_badge_name != null">{{ player.player.info.custom_badge_name }}</span>
           <Badge :priv="player.player.info.priv"/>
         </div>
-        <div class="bg-zinc-800 p-4 rounded-xl border-2 border-zinc-700 flex flex-col">
+        <!--        Place block-->
+        <div class="dark:bg-zinc-800 bg-zinc-100 p-4 rounded-xl border-2 dark:border-zinc-700 flex flex-col">
           <div class="flex flex-row justify-between p-2 items-center">
             <p>в мире</p>
-            <span class="text-teal-300 font-bold text-3xl">#{{ player.player.stats["0"].rank }}</span>
+            <span class="text-teal-500 dark:text-teal-300 font-bold text-3xl">#{{
+                player.player.stats["0"].rank
+              }}</span>
           </div>
           <div class="flex flex-row justify-between p-2 items-center">
             <p>в стране</p>
-            <span class="text-teal-300 font-bold text-3xl">#{{ player.player.stats["0"].country_rank }}</span>
+            <span class="text-teal-500 dark:text-teal-300 font-bold text-3xl">#{{
+                player.player.stats["0"].country_rank
+              }}</span>
           </div>
         </div>
-        <div class="bg-zinc-800 rounded-xl border-2 border-zinc-700 flex flex-col">
-          <div class="bg-zinc-700 px-4 py-2 flex justify-between">
+        <!--        Stats block-->
+        <div class="bg-zinc-100 dark:bg-zinc-800 rounded-xl border-2 dark:border-zinc-700 flex flex-col">
+          <div class="bg-zinc-200 dark:bg-zinc-700 px-4 py-2 flex justify-between rounded-t-lg">
             <h2 class="text-lg font-bold">Статистика</h2>
             <h2 class="text-lg font-bold">{{ format.format(player.player.stats["0"].pp) }}pp</h2>
           </div>
@@ -79,22 +87,25 @@
         </div>
       </div>
       <div class="flex flex-col grow gap-4">
-        <div class="bg-zinc-800 rounded-xl border-2 border-zinc-700">
-          <div class="bg-zinc-700 p-2 flex justify-center rounded-t-lg">
-            <h2 class="text-lg font-bold">Обо мне</h2>
-          </div>
-          <p class="p-4"></p>
-        </div>
-        <div class="bg-zinc-800 rounded-xl border-2 border-zinc-700 flex flex-col">
-          <div class="bg-zinc-700 p-2 flex justify-center rounded-t-lg mb-4">
+        <!--      Info block-->
+<!--        <div class="bg-zinc-100 dark:bg-zinc-800 rounded-xl border-2 dark:border-zinc-700">-->
+<!--          <div class="bg-zinc-200 dark:bg-zinc-700 p-2 flex justify-center rounded-t-lg">-->
+<!--            <h2 class="text-lg font-bold">Обо мне</h2>-->
+<!--          </div>-->
+<!--          <p class="p-4"></p>-->
+<!--        </div>-->
+        <!--        Best scores block-->
+        <div class="bg-zinc-100 dark:bg-zinc-800 rounded-xl border-2 dark:border-zinc-700 flex flex-col">
+          <div class="bg-zinc-200 dark:bg-zinc-700 p-2 flex justify-center rounded-t-lg">
             <h2 class="text-lg font-bold">Рекорды</h2>
           </div>
-          <div v-for="score in bestScores.scores" class="p-4">
+          <div v-for="score in bestScores.scores" class="px-4 py-2">
             <ProfileScore :object="score"/>
           </div>
         </div>
-        <div class="bg-zinc-800 rounded-xl border-2 border-zinc-700 flex flex-col gap-2">
-          <div class="bg-zinc-700 p-2 flex justify-center">
+        <!--        Recent scores block-->
+        <div class="bg-zinc-100 dark:bg-zinc-800 rounded-xl border-2 dark:border-zinc-700 flex flex-col gap-2">
+          <div class="bg-zinc-200 dark:bg-zinc-700 p-2 flex justify-center rounded-t-lg">
             <h2 class="text-lg font-bold">Последние игры</h2>
           </div>
           <div v-for="score in recentScores.scores" class="p-4">
